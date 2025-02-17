@@ -1,7 +1,8 @@
-import React from 'react'
-import { ThemeProvider } from './theme-provider'
+import React from "react";
+import { ThemeProvider } from "./theme-provider";
+import { Toaster } from "@/components/ui/toaster"
 
-const Providers = ({children} : {children :React.ReactNode}) => {
+const Providers = ({ children }: { children: React.ReactNode }) => {
   return (
     <>
       <ThemeProvider
@@ -10,11 +11,11 @@ const Providers = ({children} : {children :React.ReactNode}) => {
         enableSystem
         disableTransitionOnChange
       >
-        
         {children}
+        <Toaster />
       </ThemeProvider>
     </>
-  )
-}
+  );
+};
 
-export default Providers
+export default Providers;
