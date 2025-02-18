@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import { useFormStatus } from "react-dom";
 import { Button } from "../ui/button";
 import { Rotate3D } from "lucide-react";
@@ -21,11 +21,14 @@ export const SubmitButton = ({ className, size, text }: SubmitButtonType) => {
       size={size}
       className={`${className} capitalize`}
     >
-          {
-         pending
-          ? <Rotate3D className="animate-spin"/>
-          : <p>{text}</p> 
-      }
+      {pending ? (
+        <>
+          <Rotate3D className="animate-spin" />
+          <span>Please wait..</span>
+        </>
+      ) : (
+        <p>{text}</p>
+      )}
     </Button>
   );
 };
