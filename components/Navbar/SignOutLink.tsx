@@ -7,7 +7,7 @@ const SignOutLink = () => {
   const { toast } = useToast();
 
   const handleLogout = () => {
-    toast({ description: "LogOut Successfully" });
+    toast({description : "Logout Successfully"})
   };
 
   return (
