@@ -1,3 +1,4 @@
+'use client'
 import React from "react";
 import { Label } from "@/components/ui/label";
 import {
@@ -8,9 +9,20 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { districts } from "@/utils/mockdata/districtdata";
+import { useStore } from "@/utils/store/storemap";
 
 const DistrictInput = ({ defaultValue }: { defaultValue?: string }) => {
+  
   const name = "district";
+  const setDistrict = useStore((state)=> state.setDistrict)
+
+  const handleChange = (value : string) =>{
+    const selectedDirstrict = districts.find((data)=> data.districtname === value)
+    // console.log(selectedDirstrict)
+    if(selectedDirstrict){
+      setDistrict(selectedDirstrict)
+    }
+  }
 
   return (
     <div>
@@ -21,6 +33,7 @@ const DistrictInput = ({ defaultValue }: { defaultValue?: string }) => {
         defaultValue={defaultValue || districts[0].districtname}
         name={name}
         required
+        onValueChange={handleChange}
       >
         <SelectTrigger>
           <SelectValue />

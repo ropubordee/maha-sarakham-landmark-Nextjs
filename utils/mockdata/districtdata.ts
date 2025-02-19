@@ -1,4 +1,5 @@
-export const districts = [
+type District = { id: number; districtname: string; coords: [number, number] };
+export const districts : District[]  = [
   { id: 1, districtname: "เมืองมหาสารคาม", coords: [16.1865, 103.3007] },
   { id: 2, districtname: "แกดำ", coords: [16.2386, 103.0805] },
   { id: 3, districtname: "โกสุมพิสัย", coords: [16.333, 103.0638] },
