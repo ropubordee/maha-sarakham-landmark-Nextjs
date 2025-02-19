@@ -28,7 +28,7 @@ model Landmark {
   description String
   category    String
   image       String
-  province    String
+  district    String
   lat         Float
   lng         Float
   price       Int

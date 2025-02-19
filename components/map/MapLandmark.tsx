@@ -19,17 +19,17 @@ type LocationMarkerType = {
   setPosition: (position: LatlngType) => void;
 };
 
-// ไอคอนสำหรับ Marker แรก (แสดงตำแหน่งเริ่มต้น)
+
 const defaultIcon = L.icon({
-  iconUrl: "https://cdn-icons-png.flaticon.com/512/684/684908.png", // ไอคอนสำหรับตำแหน่งเริ่มต้น
+  iconUrl: "https://cdn-icons-png.flaticon.com/512/684/684908.png",
   iconSize: [35, 45],
   iconAnchor: [17, 45],
   popupAnchor: [0, -40],
 });
 
-// ไอคอนสำหรับ Marker ที่ผู้ใช้คลิก (ตำแหน่งที่เลือก)
+
 const userIcon = L.icon({
-  iconUrl: "https://unpkg.com/leaflet@1.9.3/dist/images/marker-icon-2x.png", // เปลี่ยนเป็นไอคอนสีฟ้าที่คุณชอบ
+  iconUrl: "https://unpkg.com/leaflet@1.9.3/dist/images/marker-icon-2x.png", 
   iconSize: [35, 45],
   iconAnchor: [17, 45],
   popupAnchor: [0, -40],
@@ -72,11 +72,11 @@ const MapLandmark = ({ location }: { location?: { lat: number; lng: number } }) 
         zoom={9}
         scrollWheelZoom={true}
       >
-        {/* Marker สำหรับตำแหน่งเริ่มต้น */}
+  
         <Marker position={location || defaultLocation} icon={defaultIcon}>
-          <Popup>📍 {district?.districtname}</Popup>
+          <Popup>📍 {district ? district.districtname : "เมืองมหาสารคาม"}</Popup>
         </Marker>
-        {/* Marker สำหรับตำแหน่งที่ผู้ใช้เลือก */}
+      
         <LocationMarker position={position} setPosition={setPosition} />
 
         <LayersControl>

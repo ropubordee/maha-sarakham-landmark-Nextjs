@@ -1,11 +1,11 @@
 import React from 'react'
-import { Button } from '@/components/ui/button'
+
+import LandmarkContainer from '@/components/home/LandmarkContainer'
 
 const HomePage = () => {
   return (
     <div>
-    HomePage
-    <Button>Submit</Button>
+      <LandmarkContainer/>
     </div>
   )
 }
