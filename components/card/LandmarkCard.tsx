@@ -9,34 +9,44 @@ const LandmarkCard = ({ landmark }: { landmark: LandmarkCardProps }) => {
     landmark;
 
   return (
-    <article className="group relative">
-      <div className="relative h-[300px] rounded-md">
+    <article className="relative bg-white shadow-md rounded-lg overflow-hidden group hover:shadow-lg transition-shadow duration-300">
+      <div className="relative h-56">
         <Image
           src={image}
           sizes="(max-width:768px) 100vw, 50vw"
-          className="object-cover rounded-md group-hover:scale-105 transition-transform duration-500"
+          className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500"
           fill
           alt={name}
         />
       </div>
-      <div className="flex items-center justify-between">
-        <h3 className="text-sm font-semibold mt-2">{name.substring(0, 30)}</h3>
-        <LandmarkRating />
+
+      <div className="p-4">
+        <div className="flex items-start justify-between">
+          <h3 className="text-base font-semibold text-gray-800 truncate w-4/5">
+            {name}
+          </h3>
+          <LandmarkRating />
+        </div>
+        <p className="text-xs text-gray-500 mt-1">{category}</p>
+
+        <p className="text-sm text-gray-600 mt-1 truncate w-full">
+          {description}
+        </p>
+
+        <div className="mt-3 text-sm text-gray-700">
+          <div className="flex items-center justify-between font-semibold">
+            <span className="text-primary">฿{price}</span>
+            <p className="text-gray-500">{district}</p>
+          </div>
+          <p className="text-xs text-gray-400 mt-1">
+            📍 {lat}, {lng}
+          </p>
+        </div>
       </div>
-      <p className="text-sm mt-1 text-muted-foreground">
-        {description.substring(0, 40)}
-      </p>
 
-      <div className="mt-2 flex items-center justify-between font-semibold text-sm">
-        <span >฿{price}</span>
-        <p>{district}</p>
+      <div className="absolute top-4 right-4">
+        <FavariteToggleButton landmarkId={id} />
       </div>
-
-    <div className="absolute top-5 right-5">
-      <FavariteToggleButton landmarkId={id}/>
-    </div>
-
-
     </article>
   );
 };

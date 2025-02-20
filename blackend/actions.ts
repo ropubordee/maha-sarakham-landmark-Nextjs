@@ -10,6 +10,7 @@ import { clerkClient, currentUser } from "@clerk/nextjs/server";
 import db from "./config/db";
 import { redirect } from "next/navigation";
 import { uploadFile } from "./config/supabase";
+import { revalidatePath } from "next/cache";
 
 const getAuthUser = async () => {
   const user = await currentUser();
@@ -72,8 +73,8 @@ export const creactLandmarkAction = async (
     console.log("valideFild", file);
     const validatedFile = validateWithZod(imageSchema, { image: file });
     const validatedFormInput = validateWithZod(landmarkSchema, rawData);
-    console.log("vaildate", validatedFile);
-    console.log("vaildate", validatedFormInput);
+    // console.log("vaildate", validatedFile);
+    // console.log("vaildate", validatedFormInput);
 
     if (
       validatedFormInput.lat === null ||
@@ -131,6 +132,57 @@ export const fetchFavoriteId = async ({
   return favorite?.id || null;
 };
 
-export const toggleFavoriteAction = async () => {
-  return { message: "Add favorite" };
+export const toggleFavoriteAction = async (prevState: {
+  favoriteId: string | null;
+  landmarkId: string;
+  pathname: string;
+}) => {
+  const { favoriteId, landmarkId, pathname } = prevState;
+  try {
+    const user = await getAuthUser();
+    if (favoriteId) {
+      await db.favorite.delete({
+        where: {
+          id: favoriteId,
+        },
+      });
+    } else {
+      await db.favorite.create({
+        data: {
+          landmarkId: landmarkId,
+          profileId: user.id,
+        },
+      });
+    }
+    revalidatePath(pathname);
+    return { message: favoriteId ? "Removed Favorite" : "Add Favorite" };
+  } catch (error) {
+    return renderError(error);
+  }
+};
+
+export const fetchFavorits = async () => {
+  const user = await getAuthUser();
+
+  const favorits = await db.favorite.findMany({
+    where: {
+      profileId: user.id,
+    },
+    select: {
+      landmark: {
+        select: {
+          id: true,
+          name: true,
+          description: true,
+          image: true,
+          price: true,
+          district: true,
+          lat: true,
+          lng: true,
+          category : true
+        },
+      },
+    },
+  });
+  return favorits.map((favorite)=> favorite.landmark)
 };
