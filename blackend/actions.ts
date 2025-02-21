@@ -104,8 +104,31 @@ export const creactLandmarkAction = async (
   redirect("/");
 };
 
-export const fetchLandmarks = async () => {
+export const fetchLandmarks = async ({
+  search = "",
+  category,
+}: {
+  search?: string;
+  category?: string;
+}) => {
   const landmarks = await db.landmark.findMany({
+    where: {
+      category: category,
+      OR: [
+        { name: { contains: search, mode: "insensitive" } },
+        { description: { contains: search, mode: "insensitive" } },
+      ],
+    },
+    orderBy: {
+      createdAt: "desc",
+    },
+  });
+
+  return landmarks;
+};
+export const fetchLandmarksHero = async () => {
+  const landmarks = await db.landmark.findMany({
+   
     orderBy: {
       createdAt: "desc",
     },
@@ -179,10 +202,23 @@ export const fetchFavorits = async () => {
           district: true,
           lat: true,
           lng: true,
-          category : true
+          category: true,
         },
       },
     },
   });
-  return favorits.map((favorite)=> favorite.landmark)
+  return favorits.map((favorite) => favorite.landmark);
 };
+
+
+export const fetchLandmarkDetail = async ({id} : {id:string}) =>{
+
+  return db.landmark.findFirst({
+    where : {
+      id : id
+    },
+    include : {
+      profile : true
+    }
+  })
+}

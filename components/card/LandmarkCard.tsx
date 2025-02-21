@@ -3,6 +3,7 @@ import Image from "next/image";
 import React from "react";
 import LandmarkRating from "./LandmarkRating";
 import FavariteToggleButton from "./FavariteToggleButton";
+import Link from "next/link";
 
 const LandmarkCard = ({ landmark }: { landmark: LandmarkCardProps }) => {
   const { name, image, description, id, district, lat, lng, category, price } =
@@ -10,6 +11,7 @@ const LandmarkCard = ({ landmark }: { landmark: LandmarkCardProps }) => {
 
   return (
     <article className="relative bg-white shadow-md rounded-lg overflow-hidden group hover:shadow-lg transition-shadow duration-300">
+      <Link href={`/landmark/${id}`}>
       <div className="relative h-56">
         <Image
           src={image}
@@ -47,6 +49,7 @@ const LandmarkCard = ({ landmark }: { landmark: LandmarkCardProps }) => {
       <div className="absolute top-4 right-4">
         <FavariteToggleButton landmarkId={id} />
       </div>
+      </Link>
     </article>
   );
 };

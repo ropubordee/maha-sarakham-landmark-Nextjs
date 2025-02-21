@@ -4,10 +4,10 @@ const bucket_name = "landmark";
 const url = process.env.SUPABASE_URL as string;
 const key = process.env.SUPABASE_KEY as string;
 
-// Create Supabase client
+
 const supabase = createClient(url, key);
 
-// Upload file using standard upload
+
 export async function uploadFile(image: File) {
   const timeStamp = Date.now();
   const newName = `Pubordee-${timeStamp}-${image.name}`;

@@ -1,13 +1,20 @@
-import React from 'react'
+import React from "react";
 
-import LandmarkContainer from '@/components/home/LandmarkContainer'
+import LandmarkContainer from "@/components/home/LandmarkContainer";
 
-const HomePage = () => {
+const HomePage = async ({
+  searchParams,
+}: {
+  searchParams: { search?: string ,category?: string };
+}) => {
+  const { search,category } = await searchParams;
+
+
   return (
     <div>
-      <LandmarkContainer/>
+      <LandmarkContainer search={search} category={category} />
     </div>
-  )
-}
+  );
+};
 
-export default HomePage
+export default HomePage;
