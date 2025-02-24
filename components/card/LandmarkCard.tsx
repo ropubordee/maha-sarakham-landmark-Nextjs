@@ -27,7 +27,6 @@ const LandmarkCard = ({ landmark }: { landmark: LandmarkCardProps }) => {
           <h3 className="text-base font-semibold text-gray-800 truncate w-4/5">
             {name}
           </h3>
-          <LandmarkRating />
         </div>
         <p className="text-xs text-gray-500 mt-1">{category}</p>
 
@@ -47,6 +46,10 @@ const LandmarkCard = ({ landmark }: { landmark: LandmarkCardProps }) => {
       </div>
 
       </Link>
+      <div className="flex justify-end">
+
+      <LandmarkRating />
+      </div>
       <div className="absolute top-4 right-4">
         <FavariteToggleButton landmarkId={id} />
       </div>

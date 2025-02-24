@@ -1,17 +1,17 @@
 import React from 'react'
-import { Button } from '../ui/button'
+
 import Link from 'next/link'
 
 const Logo = () => {
   return (
-    <Button size={'sm'}>
+
       <Link 
         href={'/'}
       className='text-2xl'>
 
-      Logo
+      <img src="https://www.shutterstock.com/image-vector/maha-sarakham-thailand-emblem-print-260nw-2353608139.jpg" alt="mahasarkham" className="w-44 h-12 object-cover" />
       </Link>
-    </Button>
+ 
   )
 }
 

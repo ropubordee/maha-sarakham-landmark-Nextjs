@@ -20,6 +20,7 @@ model Profile {
   updatedAt    DateTime   @updatedAt
   landmarks    Landmark[]
   favorites    Favorite[]
+  Rating       Rating[]
 }
 
 model Landmark {
@@ -37,10 +38,24 @@ model Landmark {
   profile     Profile    @relation(fields: [profileId], references: [clerkId], onDelete: Cascade)
   profileId   String
   favorites   Favorite[]
+  Rating      Rating[]
 }
 
 model Favorite {
   id        String   @id @default(uuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  profile   Profile @relation(fields: [profileId], references: [clerkId], onDelete: Cascade)
+  profileId String
+
+  landmark   Landmark @relation(fields: [landmarkId], references: [id], onDelete: Cascade)
+  landmarkId String
+}
+
+model Rating {
+  id        String   @id @default(uuid())
+  score     Int 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 

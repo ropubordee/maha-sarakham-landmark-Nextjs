@@ -12,7 +12,7 @@ import { redirect } from "next/navigation";
 import { uploadFile } from "./config/supabase";
 import { revalidatePath } from "next/cache";
 
-const getAuthUser = async () => {
+export const getAuthUser = async () => {
   const user = await currentUser();
   if (!user) {
     throw new Error("You must logged");
@@ -128,7 +128,6 @@ export const fetchLandmarks = async ({
 };
 export const fetchLandmarksHero = async () => {
   const landmarks = await db.landmark.findMany({
-   
     orderBy: {
       createdAt: "desc",
     },
@@ -210,15 +209,82 @@ export const fetchFavorits = async () => {
   return favorits.map((favorite) => favorite.landmark);
 };
 
-
-export const fetchLandmarkDetail = async ({id} : {id:string}) =>{
-
+export const fetchLandmarkDetail = async ({ id }: { id: string }) => {
   return db.landmark.findFirst({
-    where : {
-      id : id
+    where: {
+      id: id,
     },
-    include : {
-      profile : true
+    include: {
+      profile: true,
+    },
+  });
+};
+
+export const createRating = async ({
+  landmarkId,
+  score,
+}: {
+  landmarkId: string;
+  score: number;
+}) => {
+  try {
+    const user = await getAuthUser();
+
+    if (!user) throw new Error("Please Login");
+
+    const checkRaing = await db.rating.findFirst({
+      where: {
+        profileId: user.id,
+        landmarkId: landmarkId,
+      },
+    });
+
+    if (checkRaing) {
+      await db.rating.update({
+        where: {
+          id: checkRaing.id,
+        },
+        data: {
+          score: score,
+        },
+      });
+    } else {
+      await db.rating.create({
+        data: {
+          score: score,
+          landmarkId: landmarkId,
+          profileId: user.id,
+        },
+      });
     }
-  })
-}
+  } catch (error) {
+    console.log(error);
+  }
+};
+export const fetchRatingDetail = async ({
+  landmarkId,
+}: {
+  landmarkId: string;
+}) => {
+  try {
+    const user = await getAuthUser();
+
+
+    if(!user) return null
+
+    const checkRaing = await db.rating.findFirst({
+      where: {
+        profileId: user.id,
+        landmarkId: landmarkId,
+      },
+    });
+
+    if (checkRaing) {
+      return checkRaing.score;
+    } else {
+      return null;
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};

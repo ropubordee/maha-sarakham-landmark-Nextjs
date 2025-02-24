@@ -1,5 +1,6 @@
 import { fetchLandmarkDetail } from "@/blackend/actions";
 import FavariteToggleButton from "@/components/card/FavariteToggleButton";
+import LandmarkRatingDetail from "@/components/card/LandmarkRatingDetail";
 import Breadcrums from "@/components/landmark/Breadcrums";
 import Description from "@/components/landmark/Description";
 import ImageContainer from "@/components/landmark/ImageContainer";
@@ -29,6 +30,14 @@ const LandmarkDetail = async ({ params }: { params: { id: string } }) => {
         <div>
           <Description description={landmark.description} />
           <MapLandmark location={{ lat: landmark.lat, lng: landmark.lng }} />
+        </div>
+        <div className="flex justify-end mt-6 py-4 gap-y-3">
+         
+
+        
+          <LandmarkRatingDetail landmarkId={landmark.id}  />
+         
+
         </div>
       </section>
     </section>
