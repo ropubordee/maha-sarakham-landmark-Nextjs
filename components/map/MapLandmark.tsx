@@ -11,7 +11,7 @@ import {
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import { useStore } from "@/utils/store/storemap";
-import { MapPinCheck } from "lucide-react";
+
 
 type LatlngType = [number, number];
 type LocationMarkerType = {
@@ -59,11 +59,11 @@ const MapLandmark = ({ location }: { location?: { lat: number; lng: number } }) 
   return (
     <>
       <h1 className="mt-4 text-2xl font-semibold">Where are you ? </h1>
-      <h2 className="text-xl  mb-4 flex items-center">
+      {/* <h2 className="text-xl  mb-4 flex items-center">
   <span className="mr-2 ml-4 mt-2 text-blue-500">    <MapPinCheck size={40} />
   </span>
   การปักหมุด (จุดที่คุณต้องการปัก)
-</h2>
+</h2> */}
       <input type="hidden" name="lat" value={position ? position[0] : ""} />
       <input type="hidden" name="lng" value={position ? position[1] : ""} />
       <MapContainer

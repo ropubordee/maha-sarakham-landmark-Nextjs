@@ -8,7 +8,7 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 
-const Breadcrums = () => {
+const Breadcrums = ({ name }: { name: string }) => {
   return (
     <Breadcrumb>
       <BreadcrumbList>
@@ -18,7 +18,7 @@ const Breadcrums = () => {
         <BreadcrumbSeparator />
 
         <BreadcrumbItem>
-          <BreadcrumbPage>Breadcrumb</BreadcrumbPage>
+          <BreadcrumbPage>{name}</BreadcrumbPage>
         </BreadcrumbItem>
       </BreadcrumbList>
     </Breadcrumb>
