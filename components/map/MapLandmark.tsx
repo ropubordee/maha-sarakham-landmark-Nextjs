@@ -13,6 +13,7 @@ import "leaflet/dist/leaflet.css";
 import { useStore } from "@/utils/store/storemap";
 
 
+
 type LatlngType = [number, number];
 type LocationMarkerType = {
   position: LatlngType | null;
@@ -56,11 +57,12 @@ const MapLandmark = ({ location }: { location?: { lat: number; lng: number } }) 
   const defaultLocation: LatlngType = district ? district.coords : [16.1865, 103.3007];
   const [position, setPosition] = useState<LatlngType | null>(null);
 
+
   return (
     <>
       <h1 className="mt-4 text-2xl font-semibold">Where are you ? </h1>
       {/* <h2 className="text-xl  mb-4 flex items-center">
-  <span className="mr-2 ml-4 mt-2 text-blue-500">    <MapPinCheck size={40} />
+  <span className="mr-2 ml-4 mt-2 text-blue-50ฟ0">    <MapPinCheck size={40} />
   </span>
   การปักหมุด (จุดที่คุณต้องการปัก)
 </h2> */}

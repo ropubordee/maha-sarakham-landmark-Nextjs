@@ -46,9 +46,9 @@ const LandmarkCard = ({ landmark }: { landmark: LandmarkCardProps }) => {
       </div>
 
       </Link>
-      <div className="flex justify-end">
+      <div className="flex justify-start ms-3 mb-2">
 
-      <LandmarkRating />
+      <LandmarkRating landmarkId={id} />
       </div>
       <div className="absolute top-4 right-4">
         <FavariteToggleButton landmarkId={id} />

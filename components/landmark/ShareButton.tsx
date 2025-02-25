@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import React from "react";
 import {
   Popover,
@@ -20,8 +20,8 @@ const ShareButton = ({
   landmarkId: string;
   name: string;
 }) => {
-    const url = process.env.NEXT_PUBLIC_WEBSITE_URL
-    const shareLink = `${url}/landmark/${landmarkId}`
+  const url = process.env.NEXT_PUBLIC_WEBSITE_URL;
+  const shareLink = `${url}/landmark/${landmarkId}`;
 
   return (
     <Popover>
@@ -32,13 +32,12 @@ const ShareButton = ({
       </PopoverTrigger>
       <PopoverContent side="top" align="end" className="flex w-full gap-x-2">
         <FacebookShareButton url={shareLink} name={name}>
-            <FacebookIcon size='36px' />
+          <FacebookIcon size="36px" />
         </FacebookShareButton>
 
         <TwitterShareButton url={shareLink} name={name}>
-            <TwitterIcon size={'36px'}/>
+          <TwitterIcon size={"36px"} />
         </TwitterShareButton>
-
       </PopoverContent>
     </Popover>
   );

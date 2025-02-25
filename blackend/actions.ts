@@ -261,6 +261,25 @@ export const createRating = async ({
     console.log(error);
   }
 };
+export const fetchRatingAverage = async ({
+  landmarkId,
+}: {
+  landmarkId: string;
+}) => {
+  try {
+    const averageRating = await db.rating.aggregate({
+      where: {
+        landmarkId: landmarkId,
+      },
+      _avg: {
+        score: true,
+      },
+    });
+    return averageRating._avg.score;
+  } catch (error) {
+    console.log(error);
+  }
+};
 export const fetchRatingDetail = async ({
   landmarkId,
 }: {
@@ -269,8 +288,7 @@ export const fetchRatingDetail = async ({
   try {
     const user = await getAuthUser();
 
-
-    if(!user) return null
+    if (!user) return null;
 
     const checkRaing = await db.rating.findFirst({
       where: {

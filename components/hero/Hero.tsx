@@ -7,6 +7,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
 import OtherInfo from "./OtherInfo";
+import Image from "next/image";
 
 const Hero = ({ landmarks }: { landmarks: LandmarkCardProps[] }) => {
   return (
@@ -27,7 +28,7 @@ const Hero = ({ landmarks }: { landmarks: LandmarkCardProps[] }) => {
             
               <SwiperSlide key={item.id} className="group">
                 <div className="relative rounded-md overflow-hidden">
-                  <img
+                  <Image
                     className="w-full h-[600px] object-cover brightness-75 group-hover:brightness-50 transition-all duration-300"
                     src={item.image} alt={item.name}
                   />
