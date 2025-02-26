@@ -1,7 +1,7 @@
 'use client'
 import React from 'react'
 
-import { toggleFavoriteAction } from '@/blackend/actions'
+import { toggleFavoriteAction } from '@/backend/actions'
 import FormContainer from './FormContainer'
 import { usePathname } from 'next/navigation'
 import { CardSubmitButton } from './Buttons'

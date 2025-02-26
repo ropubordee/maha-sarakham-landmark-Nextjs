@@ -1,4 +1,4 @@
-import { creactProfileAction } from "@/blackend/actions";
+import { creactProfileAction } from "@/backend/actions";
 import { SubmitButton } from "@/components/form/Buttons";
 import FormContainer from "@/components/form/FormContainer";
 import FormInput from "@/components/form/FormInput";

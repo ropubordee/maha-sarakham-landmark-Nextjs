@@ -1,5 +1,5 @@
 'use client'
-import { fetchRatingAverage } from "@/blackend/actions";
+import { fetchRatingAverage } from "@/backend/actions";
 import { Star } from "lucide-react";
 import React, { useEffect, useState } from "react";
 

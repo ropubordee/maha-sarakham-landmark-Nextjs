@@ -1,4 +1,4 @@
-import { creactLandmarkAction } from "@/blackend/actions";
+import { creactLandmarkAction } from "@/backend/actions";
 import { SubmitButton } from "@/components/form/Buttons";
 import CategoryInput from "@/components/form/CategoryInput";
 import DistrictInput from "@/components/form/DistrictInput";

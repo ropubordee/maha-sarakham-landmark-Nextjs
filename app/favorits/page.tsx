@@ -1,4 +1,4 @@
-import { fetchFavorits } from "@/blackend/actions";
+import { fetchFavorits } from "@/backend/actions";
 import EmptyList from "@/components/home/EmptyList";
 import LandmarkList from "@/components/home/LandmarkList";
 import React from "react";

@@ -2,12 +2,12 @@ import React from "react";
 
 import LandmarkContainer from "@/components/home/LandmarkContainer";
 
-const HomePage = async ({
+const HomePage = ({
   searchParams,
 }: {
   searchParams: { search?: string ,category?: string };
 }) => {
-  const { search,category } = await searchParams;
+  const { search,category } = searchParams;
 
 
   return (

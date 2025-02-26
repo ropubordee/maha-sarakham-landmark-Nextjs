@@ -2,7 +2,7 @@ import React from "react";
 
 import { auth } from "@clerk/nextjs/server";
 import { SignInCardButton } from "../form/Buttons";
-import { fetchFavoriteId } from "@/blackend/actions";
+import { fetchFavoriteId } from "@/backend/actions";
 import FavoriteToggleForm from "../form/FavoriteToggleForm";
 
 const FavariteToggleButton = async ({ landmarkId }: { landmarkId: string }) => {

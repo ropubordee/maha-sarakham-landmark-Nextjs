@@ -5,28 +5,28 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { useDebouncedCallback } from "use-debounce";
 
 const Search = () => {
-  const seachParams = useSearchParams();
+  const searchParams = useSearchParams(); 
   const { replace } = useRouter();
 
   const [search, setSearch] = useState(
-    seachParams.get("search")?.toString() || ""
+    searchParams.get("search")?.toString() || ""
   );
 
   const handleSearch = useDebouncedCallback((value: string) => {
-    const params = new URLSearchParams(seachParams);
+    const params = new URLSearchParams(searchParams);
     if (value) {
       params.set("search", value);
     } else {
       params.delete("search");
     }
-    replace(`/?${params.toString()}`);
+   replace(`/?${params.toString()}`);
   }, 400);
 
   useEffect(() => {
-    if (!seachParams.get("search")) {
+    if (!searchParams.get("search")) {
       setSearch("");
     }
-  }, [seachParams.get("search")]);
+  }, [searchParams.get("search")]);
 
   return (
     <Input

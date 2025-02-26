@@ -1,4 +1,4 @@
-import { fetchLandmarks, fetchLandmarksHero } from "@/blackend/actions";
+import { fetchLandmarks, fetchLandmarksHero } from "@/backend/actions";
 import React from "react";
 import LandmarkList from "./LandmarkList";
 import { LandmarkCardProps } from "@/utils/types";
