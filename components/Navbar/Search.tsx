@@ -1,11 +1,11 @@
-'use client'
-import React, { useEffect, useState } from "react";
+"use client";
+import React, { Suspense, useEffect, useState } from "react";
 import { Input } from "../ui/input";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useDebouncedCallback } from "use-debounce";
 
 const Search = () => {
-  const searchParams = useSearchParams(); 
+  const searchParams = useSearchParams();
   const { replace } = useRouter();
 
   const [search, setSearch] = useState(
@@ -19,7 +19,7 @@ const Search = () => {
     } else {
       params.delete("search");
     }
-   replace(`/?${params.toString()}`);
+    replace(`/?${params.toString()}`);
   }, 400);
 
   useEffect(() => {
@@ -34,7 +34,7 @@ const Search = () => {
       placeholder="Sach camping"
       className="max-w-xs"
       onChange={(e) => {
-        setSearch(e.target.value)
+        setSearch(e.target.value);
         handleSearch(e.target.value);
       }}
       value={search}
@@ -42,4 +42,12 @@ const Search = () => {
   );
 };
 
-export default Search;
+const SuspendedSearch = () => (
+  <Suspense fallback={<div>Loading...</div>}>
+    <Search />
+  </Suspense>
+  
+);
+
+
+export default SuspendedSearch;

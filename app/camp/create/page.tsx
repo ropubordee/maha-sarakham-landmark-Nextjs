@@ -1,3 +1,4 @@
+'use client'
 import { creactLandmarkAction } from "@/backend/actions";
 import { SubmitButton } from "@/components/form/Buttons";
 import CategoryInput from "@/components/form/CategoryInput";
@@ -6,11 +7,16 @@ import FormContainer from "@/components/form/FormContainer";
 import FormInput from "@/components/form/FormInput";
 import ImageInput from "@/components/form/ImageInput";
 import TextAreaInput from "@/components/form/TextAreaInput";
-import MapLandmark from "@/components/map/MapLandmark";
+import dynamic from "next/dynamic";
 
 import React from "react";
 
-const CreateLandmarkPage = async () => {
+
+  const DynamicComponentWithNoSSR = dynamic(()=> import('@/components/map/MapLandmark'),{
+    ssr : false
+  })
+
+const CreateLandmarkPage = () => {
   return (
     <section>
       <h1 className="text-2xl font-semibold mb-8 ">Create Landmark</h1>
@@ -38,7 +44,7 @@ const CreateLandmarkPage = async () => {
             <DistrictInput />
           </div>
           <ImageInput/>
-          <MapLandmark />
+          <DynamicComponentWithNoSSR />
 
           <SubmitButton text="create Landmark" size="default" />
         </FormContainer>

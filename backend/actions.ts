@@ -1,5 +1,5 @@
 "use server";
-
+import 'dotenv/config'; 
 import {
   imageSchema,
   landmarkSchema,
@@ -9,7 +9,7 @@ import {
 import { clerkClient, currentUser } from "@clerk/nextjs/server";
 import db from "./config/db";
 import { redirect } from "next/navigation";
-import { uploadFile } from "./config/supabase";
+import { uploadFile } from "../utils/supabase";
 import { revalidatePath } from "next/cache";
 
 export const getAuthUser = async () => {

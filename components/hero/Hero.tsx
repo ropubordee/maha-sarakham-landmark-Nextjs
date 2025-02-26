@@ -30,7 +30,7 @@ const Hero = ({ landmarks }: { landmarks: LandmarkCardProps[] }) => {
                 <div className="relative rounded-md overflow-hidden">
                   <Image
                     className="w-full h-[600px] object-cover brightness-75 group-hover:brightness-50 transition-all duration-300"
-                    src={item.image} alt={item.name}
+                    src={item.image} alt={item.name} width={800} height={600}
                   />
                 </div>
                 <div className="absolute bottom-0 left-0 z-50">
