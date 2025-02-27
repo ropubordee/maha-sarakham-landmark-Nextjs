@@ -48,7 +48,7 @@ const LandmarkRating = ({ landmarkId }: { landmarkId: string }) => {
           stars = 5;
           break;
         default:
-          stars = 0;
+          stars = 5;
           break;
       }
   

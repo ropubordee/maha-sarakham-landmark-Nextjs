@@ -5,6 +5,7 @@ import Navbar from "@/components/Navbar/Navbar";
 import Providers from "./Providers";
 import { ClerkProvider } from "@clerk/nextjs";
 import {Prompt} from 'next/font/google'
+import Footer from "@/components/Navbar/Footer";
 
 
 const prompt = Prompt({
@@ -46,6 +47,7 @@ export default function RootLayout({
         <main className="container">
           
         {children}
+        <Footer/>
         </main>
         </Providers>
       </body>

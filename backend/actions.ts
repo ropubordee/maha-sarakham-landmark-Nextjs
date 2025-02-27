@@ -9,8 +9,9 @@ import {
 import { clerkClient, currentUser } from "@clerk/nextjs/server";
 import db from "./config/db";
 import { redirect } from "next/navigation";
-import { uploadFile } from "../utils/supabase";
+
 import { revalidatePath } from "next/cache";
+import { uploadFile } from '@/utils/supabase';
 
 export const getAuthUser = async () => {
   const user = await currentUser();
