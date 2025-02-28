@@ -1,10 +1,11 @@
-import { fetchLandmarks, fetchLandmarksHero } from "@/backend/actions";
+import { fetchLandmarks, fetchLandmarksHero } from "@/backend/actions/landmarks";
 import React from "react";
 import LandmarkList from "./LandmarkList";
 import { LandmarkCardProps } from "@/utils/types";
 import Hero from "../hero/Hero";
 import CategoriesList from "./CategoriesList";
 import EmptyList from "./EmptyList";
+
 
 const LandmarkContainer = async ({
   search,

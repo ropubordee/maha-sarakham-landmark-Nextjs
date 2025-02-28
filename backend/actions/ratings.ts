@@ -58,3 +58,29 @@ export const fetchRatingAverage = async ({
     console.log(error);
   }
 };
+export const fetchRatingDetail = async ({
+  landmarkId,
+}: {
+  landmarkId: string;
+}) => {
+  try {
+    const user = await getAuthUser();
+
+    if (!user) return null;
+
+    const checkRaing = await db.rating.findFirst({
+      where: {
+        profileId: user.id,
+        landmarkId: landmarkId,
+      },
+    });
+
+    if (checkRaing) {
+      return checkRaing.score;
+    } else {
+      return null;
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};

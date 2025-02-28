@@ -1,5 +1,5 @@
 "use client";
-import { createRating, fetchRatingDetail } from "@/backend/actions";
+import { createRating, fetchRatingDetail } from "@/backend/actions/ratings";
 import { RatingStar } from "@/utils/mockdata/ratingdata";
 
 import { Star } from "lucide-react";
