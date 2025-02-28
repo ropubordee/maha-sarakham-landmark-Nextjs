@@ -2,8 +2,8 @@ import React from "react";
 
 import { auth } from "@clerk/nextjs/server";
 import { SignInCardButton } from "../form/Buttons";
-import { fetchFavoriteId } from "@/backend/actions";
 import FavoriteToggleForm from "../form/FavoriteToggleForm";
+import { fetchFavoriteId } from "@/backend/actions/favorites";
 
 const FavariteToggleButton = async ({ landmarkId }: { landmarkId: string }) => {
   const { userId } = await auth();

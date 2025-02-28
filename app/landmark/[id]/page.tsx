@@ -1,4 +1,5 @@
-import { fetchLandmarkDetail } from "@/backend/actions";
+
+import { fetchLandmarkDetail } from "@/backend/actions/landmarks";
 import FavariteToggleButton from "@/components/card/FavariteToggleButton";
 import Breadcrums from "@/components/landmark/Breadcrums";
 import Description from "@/components/landmark/Description";

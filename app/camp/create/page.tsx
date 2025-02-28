@@ -1,5 +1,5 @@
 'use client'
-import { creactLandmarkAction } from "@/backend/actions";
+import { createLandmarkAction } from "@/backend/actions/landmarks";
 import { SubmitButton } from "@/components/form/Buttons";
 import CategoryInput from "@/components/form/CategoryInput";
 import DistrictInput from "@/components/form/DistrictInput";
@@ -21,7 +21,7 @@ const CreateLandmarkPage = () => {
     <section>
       <h1 className="text-2xl font-semibold mb-8 ">Create Landmark</h1>
       <div className="border p-8 rounded-md ">
-        <FormContainer action={creactLandmarkAction}>
+        <FormContainer action={createLandmarkAction}>
           <div className="grid md:grid-cols-2 gap-4 mt-4">
             <FormInput
               name="name"
