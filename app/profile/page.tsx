@@ -1,11 +1,15 @@
-import React from 'react'
+import { fetchProfile } from "@/backend/actions/profile";
+import ProfileDetail from "@/components/profile/ProfileDetail";
+import React from "react";
 
-const ProFilePage = () => {
-  return (
-    <div>
-      ProFilePage
-    </div>
-  )
-}
+const ProFilePage = async() =>{
 
-export default ProFilePage
+
+  const dataProfile =  await fetchProfile()
+
+  return <div>
+    <ProfileDetail dataProfile={dataProfile}/>
+  </div>;
+};
+
+export default ProFilePage;

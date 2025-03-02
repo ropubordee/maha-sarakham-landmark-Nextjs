@@ -4,6 +4,7 @@ import db from "@/backend/config/db"
 import { validateWithZod, profileSchema } from "@/utils/schemas";
 import { redirect } from "next/navigation";
 import { renderError } from "./errors";
+import { getAuthUser } from "./auth";
 
 
 export const createProfileAction = async (
@@ -37,3 +38,26 @@ export const createProfileAction = async (
   }
   redirect("/");
 };
+
+export const fetchProfile = async() =>{
+
+
+  const user = await getAuthUser()
+
+  console.log(user)
+
+  const Profile = await db.profile.findFirst({
+
+    where : {
+      clerkId : user.id
+    }
+
+  })
+
+  console.log(Profile)
+
+  return Profile
+
+}
+
+fetchProfile()

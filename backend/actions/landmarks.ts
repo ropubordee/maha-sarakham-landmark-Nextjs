@@ -82,3 +82,7 @@ export const fetchLandmarkDetail = async ({ id }: { id: string }) => {
     },
   });
 };
+
+
+
+
