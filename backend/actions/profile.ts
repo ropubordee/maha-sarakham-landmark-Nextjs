@@ -1,11 +1,10 @@
 "use server";
 import { clerkClient, currentUser } from "@clerk/nextjs/server";
-import db from "@/backend/config/db"
+import db from "@/backend/config/db";
 import { validateWithZod, profileSchema } from "@/utils/schemas";
 import { redirect } from "next/navigation";
 import { renderError } from "./errors";
 import { getAuthUser } from "./auth";
-
 
 export const createProfileAction = async (
   prevState: unknown,
@@ -32,32 +31,22 @@ export const createProfileAction = async (
     await clinent.users.updateUserMetadata(user.id, {
       privateMetadata: { hasProfile: true },
     });
-
   } catch (error) {
     return renderError(error);
   }
   redirect("/");
 };
 
-export const fetchProfile = async() =>{
-
-
-  const user = await getAuthUser()
-
-  console.log(user)
+export const fetchProfile = async () => {
+  const user = await getAuthUser();
 
   const Profile = await db.profile.findFirst({
+    where: {
+      clerkId: user.id,
+    },
+  });
 
-    where : {
-      clerkId : user.id
-    }
+  return Profile;
+};
 
-  })
-
-  console.log(Profile)
-
-  return Profile
-
-}
-
-fetchProfile()
+fetchProfile();
