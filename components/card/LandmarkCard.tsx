@@ -40,7 +40,7 @@ const LandmarkCard = ({ landmark }: { landmark: LandmarkCardProps }) => {
             <p className="text-gray-500">{district}</p>
           </div>
           <p className="text-xs text-gray-400 mt-1">
-            📍 {lat}, {lng}
+            📍 {lat.toFixed(5)} |  {lng.toFixed(5)}
           </p>
         </div>
       </div>
