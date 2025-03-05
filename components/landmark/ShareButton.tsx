@@ -12,6 +12,8 @@ import {
   TwitterShareButton,
   FacebookIcon,
   TwitterIcon,
+  LineShareButton,
+  LineIcon,
 } from "react-share";
 const ShareButton = ({
   landmarkId,
@@ -38,6 +40,11 @@ const ShareButton = ({
         <TwitterShareButton url={shareLink} name={name}>
           <TwitterIcon size={"36px"} />
         </TwitterShareButton>
+
+        <LineShareButton url={shareLink} name={name}>
+          <LineIcon size={36} />
+        </LineShareButton>
+
       </PopoverContent>
     </Popover>
   );
